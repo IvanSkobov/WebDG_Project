@@ -1,0 +1,34 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+	<title>{{ news.title }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">{{ news.title }}</h1>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <p class="card-text"><strong>Автор:</strong> {{ news.author.username }}</p>
+                <p class="card-text"><strong>Дата публикации:</strong> {{ news.pub_date|date:"d.m.Y H:i" }}</p>
+            </div>
+            
+            <div class="mb-3">
+                <h4>Краткое описание:</h4>
+                <p class="card-text">{{ news.short_description }}</p>
+            </div>
+            
+            <div class="mb-3">
+                <h4>Полный текст:</h4>
+                <p class="card-text">{{ news.text|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'news_home' %}" class="btn btn-warning">Назад к новостям</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 
